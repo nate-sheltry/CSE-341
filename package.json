@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "server.js",
+    "start": "nodemon server.js",
     "git-update": "git add . && git commit -m \"update\" && git push"
   },
   "keywords": [],
@@ -13,5 +13,8 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
   }
 }
