@@ -1,12 +1,13 @@
 // express web server
 const express = require('express');
+const routes = require('./routes')
 const app = express();
+const port = 3000;
+console.log('app made')
 
-app.get('/', (req, res) => {
-    res.send('hello');
-});
+app.use('/', routes);
 
-const port = 3000
+console.log('app loaded')
 
 app.listen(process.env.port || port);
 console.log('Web Server is listening at port '+ (process.env.port || port));
