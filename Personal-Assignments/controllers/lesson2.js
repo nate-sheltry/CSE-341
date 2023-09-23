@@ -4,7 +4,6 @@ async function getAllDocuments(db, collectionName){
 }
 
 async function getRequestByName(db, collectionName, fname, lname){
-    let dict = {}
     const collection = db.collection(collectionName);
     return collection.find({firstName:fname, lastName:lname}).toArray();
 }
