@@ -1,5 +1,5 @@
 # Request
-GET http://localhost:3000/contacts?fname=Shannon&lname=Decell
+GET http://localhost:3000/contacts?fname=Shannon&lname=DeCell
 
 # Expected Response
 HTTP/1.1 200 OK
