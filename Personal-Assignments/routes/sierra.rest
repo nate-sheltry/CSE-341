@@ -1,0 +1,17 @@
+# Request
+GET http://localhost:3000/contacts?fname=Sierra&lname=Wamsley
+
+# Expected Response
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+
+[{
+  "_id": {
+    "$oid": "650e7bedbbd40f0ceca634ac"
+  },
+  "firstName": "Sierra",
+  "lastName": "Wamsley",
+  "email": "bluewamsley@gmail.com",
+  "favoriteColor": "blue",
+  "birthday": "5/24/2002"
+}]

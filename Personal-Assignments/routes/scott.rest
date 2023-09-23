@@ -1,0 +1,17 @@
+# Request
+GET http://localhost:3000/contacts?fname=Scott&lname=Dunham
+
+# Expected Response
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+
+[{
+  "_id": {
+    "$oid": "650e7bbcbbd40f0ceca634aa"
+  },
+  "firstName": "Scott",
+  "lastName": "Dunham",
+  "email": "sgazelem@gmail.com",
+  "favoriteColor": "Red",
+  "birthday": "12/24/1967"
+}]

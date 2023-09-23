@@ -1,0 +1,30 @@
+[{
+  "_id": {
+    "$oid": "650e7bbcbbd40f0ceca634aa"
+  },
+  "firstName": "Scott",
+  "lastName": "Dunham",
+  "email": "sgazelem@gmail.com",
+  "favoriteColor": "Red",
+  "birthday": "12/24/1967"
+},
+{
+  "_id": {
+    "$oid": "650e7be8bbd40f0ceca634ab"
+  },
+  "firstName": "Shannon",
+  "lastName": "DeCell",
+  "email": "sdunham37@gmail.com",
+  "favoriteColor": "Green",
+  "birthday": "9/1/1971"
+},
+{
+  "_id": {
+    "$oid": "650e7bedbbd40f0ceca634ac"
+  },
+  "firstName": "Sierra",
+  "lastName": "Wamsley",
+  "email": "bluewamsley@gmail.com",
+  "favoriteColor": "blue",
+  "birthday": "5/24/2002"
+}]
