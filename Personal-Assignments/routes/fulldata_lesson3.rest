@@ -54,8 +54,8 @@ PUT http://localhost:3000/api/cse-341/contacts/65178adee448d71142a13e53
 Content-Type: application/json
 
 {
-    "email":"notthatguy@hotmail.com",
-    "favoriteColor": "red"
+    "email":"notthaguy@hotmail.com",
+    "favoriteColor": "blue"
 }
 
 ### Expected Response ###
@@ -64,7 +64,7 @@ HTTP/1.1 204 No Content
 ###################
 
 ### DELETE Request ###
-DELETE http://localhost:3000/api/cse-341/contacts/delete=6517a03b2de3fdfced94ca99
+DELETE http://localhost:3000/api/cse-341/contacts/delete=6517a4eff44d222e76e372fe
 
 # Expected Response ###
 HTTP/1.1 200 OK

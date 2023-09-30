@@ -64,7 +64,7 @@ HTTP/1.1 204 No Content
 ###################
 
 ### DELETE Request ###
-DELETE https://cse341-fall23-c9yu.onrender.com/api/cse-341/contacts/delete=6517a4001875ce52a95798f6
+DELETE https://cse341-fall23-c9yu.onrender.com/api/cse-341/contacts/delete=6517a52a477aed314a55d215
 
 # Expected Response ###
 HTTP/1.1 200 OK
