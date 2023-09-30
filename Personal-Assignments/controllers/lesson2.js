@@ -5,10 +5,11 @@ async function getAllDocuments(db, collectionName){
 
 async function getRequestByName(db, collectionName, fname, lname){
     const collection = db.collection(collectionName);
+    console.log(await collection.find({firstName:fname, lastName:lname}).toArray());
     return collection.find({firstName:fname, lastName:lname}).toArray();
 }
 
 module.exports = {
     getAllDocuments,
     getRequestByName
-}
+};

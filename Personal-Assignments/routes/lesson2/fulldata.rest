@@ -1,5 +1,5 @@
 # Request
-GET https://cse341-fall23-c9yu.onrender.com/contacts-data
+GET http://localhost:3000/api/lesson-2/contacts-data
 
 # Expected Response
 HTTP/1.1 200 OK

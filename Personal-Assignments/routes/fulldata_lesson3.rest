@@ -1,0 +1,78 @@
+### Request
+GET http://localhost:3000/api/cse-341/contacts-data
+
+### Expected Response
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+
+[
+  {
+    "_id": "65178aace448d71142a13e52",
+    "firstName": "Ammon",
+    "lastName": "DeRoussel",
+    "email": "fakeguy@gmail.com",
+    "favoriteColor": "burgandy",
+    "birthday": "3/12/2002"
+  },
+  {
+    "_id": "65178adee448d71142a13e53",
+    "firstName": "Brent",
+    "lastName": "Morris",
+    "email": "brentybmorris@gmail.com",
+    "favoriteColor": "roman empire",
+    "birthday": "9/1/2002"
+  }
+]
+
+###################
+
+### POST Request ###
+POST http://localhost:3000/api/cse-341/contacts/post
+Content-Type: application/json
+
+{
+  "firstName": "Sierra",
+  "lastName": "Wamsley",
+  "email": "bluewamsley@gmail.com",
+  "favoriteColor": "blue",
+  "birthday": "5/24/2002"
+}
+
+### Expected Response ###
+HTTP/1.1 201 Created
+Content-Type: application/json; charset=utf-8
+
+{
+  "acknowledged": true,
+  "insertedId": "id"
+}
+
+###################
+
+### PUT Request ###
+PUT http://localhost:3000/api/cse-341/contacts/65178adee448d71142a13e53
+Content-Type: application/json
+
+{
+    "email":"notthatguy@hotmail.com",
+    "favoriteColor": "red"
+}
+
+### Expected Response ###
+HTTP/1.1 204 No Content
+
+###################
+
+### DELETE Request ###
+DELETE http://localhost:3000/api/cse-341/contacts/delete=6517a03b2de3fdfced94ca99
+
+# Expected Response ###
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+
+{
+  "acknowledged": true,
+  "deletedCount": 1
+}
+
+###################

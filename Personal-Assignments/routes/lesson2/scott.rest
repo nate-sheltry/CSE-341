@@ -1,5 +1,5 @@
 # Request
-GET http://localhost:3000/contacts?fname=Scott&lname=Dunham
+GET http://localhost:3000/api/lesson-2/contacts?fname=Scott&lname=Dunham
 
 # Expected Response
 HTTP/1.1 200 OK

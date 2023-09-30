@@ -5,14 +5,13 @@ require('dotenv').config();
 const url = process.env.MONGODB_URL;
 
 //Database Name
-const dbname = 'Lesson-2';
 
-async function startConnection() {
+async function startConnection(dbname) {
     const client = new MongoClient(url, { useNewUrlParser: true, useUnifiedTopology: true });
 
     try {
         await client.connect();
-        console.log(`Connected to MongoDB`)
+        console.log('Connected to MongoDB');
         const db = client.db(dbname);
         return db;
     } catch (error) {
@@ -21,4 +20,11 @@ async function startConnection() {
     }
 }
 
-module.exports = startConnection;
+async function startConnectionL2(){return startConnection('Lesson-2');}
+
+async function startConnectionL3(){return startConnection('CSE-341');}
+
+module.exports = {
+    startConnectionL2,
+    startConnectionL3
+};
