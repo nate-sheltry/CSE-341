@@ -1,5 +1,5 @@
 ### Request
-GET http://localhost:3000/api/cse-341/contacts-data
+GET https://cse341-fall23-c9yu.onrender.com/api/cse-341/contacts-data
 
 ### Expected Response
 HTTP/1.1 200 OK
@@ -64,7 +64,7 @@ HTTP/1.1 204 No Content
 ###################
 
 ### DELETE Request ###
-DELETE https://cse341-fall23-c9yu.onrender.com/api/cse-341/contacts/delete=651789a6e448d71142a13e51
+DELETE https://cse341-fall23-c9yu.onrender.com/api/cse-341/contacts/delete=6517a4001875ce52a95798f6
 
 # Expected Response ###
 HTTP/1.1 200 OK
