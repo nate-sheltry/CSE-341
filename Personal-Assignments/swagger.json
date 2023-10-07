@@ -1,0 +1,253 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "My Contacts API",
+    "description": "An API For my webservices class.",
+    "version": "1.0.0"
+  },
+  "host": "localhost:3000",
+  "basePath": "/",
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/": {
+      "get": {
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/hannah": {
+      "get": {
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/sierra": {
+      "get": {
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/{database}/{collection}-data": {
+      "get": {
+        "description": "<b>Databse: <i>cse-341</i><br>Collections: <i>contacts,</i><br><br>Database: <i>lesson-2</i><br>Collections: <i>contacts</i>",
+        "parameters": [
+          {
+            "name": "database",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "collection",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/{database}/{collection}": {
+      "get": {
+        "description":  "<b>Databse: <i>cse-341</i><br>Collections: <i>contacts</i><br><br></b> fname: John<br>lname: Doe <br><br>fname: Derek<br>lname: Bailey <b><br><br>Database: <i>lesson-2</i><br>Collections: <i>contacts</i><br><br></b> fname: Scott<br>lname: Dunham <br><br>",
+        "parameters": [
+          {
+            "name": "database",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "collection",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "fname",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "lname",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/{database}/{collection}/post": {
+      "post": {
+        "description": "<b>Databse: <i>cse-341</i><br>Collections: <i>contacts,</i><br><br>Database: <i>lesson-2</i><br>Collections: <i>contacts</i>",
+        "parameters": [
+          {
+            "name": "database",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "collection",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "firstName": {
+                  "example": "John"
+                },
+                "lastName": {
+                  "example": "Doe"
+                },
+                "email": {
+                  "example": "something@gmail.com"
+                },
+                "favoriteColor": {
+                  "example": "red"
+                },
+                "birthday": {
+                  "example": "12/25/1990"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Invalid request body"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/{database}/{collection}/{id}": {
+      "put": {
+        "description": "<b>Databse: <i>cse-341</i><br>Collections: <i>contacts,</i><br><br>Database: <i>lesson-2</i><br>Collections: <i>contacts</i>",
+        "parameters": [
+          {
+            "name": "database",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "collection",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "firstName": {
+                  "example": "John"
+                },
+                "lastName": {
+                  "example": "Doe"
+                },
+                "email": {
+                  "example": "something@gmail.com"
+                },
+                "favoriteColor": {
+                  "example": "red"
+                },
+                "birthday": {
+                  "example": "12/25/1990"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/{database}/{collection}/delete={id}": {
+      "delete": {
+        "description": "<b>Databse: <i>cse-341</i><br>Collections: <i>contacts,</i><br><br>Database: <i>lesson-2</i><br>Collections: <i>contacts</i>",
+        "parameters": [
+          {
+            "name": "database",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "collection",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    }
+  }
+}

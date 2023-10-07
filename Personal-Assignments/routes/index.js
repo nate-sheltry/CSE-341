@@ -34,8 +34,10 @@ function determineDatabase(database, collection = 'contacts'){
 
 }
 
-/*GET Routes*/
+/*Enable Swagger API*/
+routes.use('/', require('./swagger'))
 
+/*GET Routes*/
 routes.get('/', lesson1Controller.defaultRoute);
 routes.get('/hannah', lesson1Controller.hannahRoute);
 routes.get('/sierra', lesson1Controller.sierraRoute);
