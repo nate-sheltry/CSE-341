@@ -14,8 +14,8 @@
     "oauth2": {
        "type": "oauth2",
        "flow": "accessCode",
-       "authorizationUrl": "http://localhost:3000/auth/github/callback",
-       "description":"<b> Client Id:</b> 852d57e321044c3e49f4<br>",
+       "authorizationUrl": "https://cse341-project-2-lo8v.onrender.com/auth/github/callback",
+       "description":"<b> Client Id:</b> 254928805826d96201c8<br>",
        "scopes": "read write"
     }
  },
