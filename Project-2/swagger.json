@@ -1,0 +1,381 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Project 2 API",
+    "description": "An API For my webservices class.",
+    "version": "1.0.0"
+  },
+  "host": "https://cse341-project-2-lo8v.onrender.com",
+  "basePath": "/",
+  "schemes": [
+    "https"
+  ],
+  "securityDefinitions": {
+    "oauth2": {
+       "type": "oauth2",
+       "flow": "accessCode",
+       "authorizationUrl": "http://localhost:3000/auth/github/callback",
+       "description":"<b> Client Id:</b> 852d57e321044c3e49f4<br>",
+       "scopes": "read write"
+    }
+ },
+  "paths": {
+    "/api/games": {
+      "get": {
+        "description": "<b>To request all data, leave queries blank.<br>To get all games by year only enter year. <br>To search by beta status only enter beta.<br>Any combination of queries may be used to get any data matching the specified queries.<h2>Example Data:</h2><section><h3>Name: Lion Welps</h3> - year: 2004<br> - beta: released</section><section><h3>Name: PK from the Shadows</h3> - year: 2010<br> - beta: released</section>",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "year",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "beta",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/players": {
+      "get": {
+        "description": "<b>Find players by any of the following queries:<div><b>You may find multiple players by their last played game.<br>They're last played game's refund status, or by when they purchased their last play game.<br>You may also find them by their specific id.</b></div><br><h3>You may also get all data by leaving queries blank.</h3>",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "game",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "refund",
+            "in": "query",
+            "type": "string",
+            "example":"<b>active</b> or <b>expired</b>"
+          },
+          {
+            "name": "purchase",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "lastPlayed",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "playerId",
+            "in": "query",
+            "type": "string",
+            "example":"<b>1e113ac91be9f00c3f5a7fbca2f92fcd6d09d2c559cc76f62fcad575d21813c9</b>"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/games/post": {
+      "post": {
+        "description": "<b>Add a games data object.</b><div>If improper keys are entered, or not all the necessary keys are entered, it will throw an error due to an invalid format.</div>",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "example": "Assassin's Creed"
+                },
+                "currentVersion": {
+                  "example": "1.2.35"
+                },
+                "releaseYear": {
+                  "example": "2007"
+                },
+                "betaStatus": {
+                  "example": "released"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/players/post": {
+      "post": {
+        "description": "<b>Add a players data object.</b><div>If improper keys are entered, or not all the necessary keys are entered, it will throw an error due to an invalid format.</div>",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "example": "OrcSlayer554"
+                },
+                "id": {
+                  "example": "e8f0ef46f84d4ff3db849d744c3afd1d3ab44277c1341da10cf5b05a7d7c69c6"
+                },
+                "game": {
+                  "example": "Arkham Asylum"
+                },
+                "gameVersion": {
+                  "example": "1.2.4"
+                },
+                "purchaseDate": {
+                  "example": "10/24/2013"
+                },
+                "refundWindow": {
+                  "example": "expired"
+                },
+                "lastPlayed": {
+                  "example": "8/5/2021"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/games/{id}": {
+      "put": {
+        "description": "<b>Change some or all of the data in a game data object</b><div>If improper keys are entered, it will throw an error due to an invalid key.</div>",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "currentVersion": {
+                  "example": "0.5.15"
+                },
+                "betaStatus": {
+                  "example": "active"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/players/{id}": {
+      "put": {
+        "description": "<b>Change and modify some or all data in a player data object.</b><div>If improper keys are entered, it will throw an error due to an invalid key.</div>",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "example": "KazutoBaraka"
+                },
+                "game": {
+                  "example": "PK from the Shadows"
+                },
+                "gameVersion": {
+                  "example": "1.8.9"
+                },
+                "lastPlayed": {
+                  "example": "10/14/2023"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/{collection}/delete={id}": {
+      "delete": {
+        "description":"<b>Collections:</b><br> - players<br> - games<br>id refers to the database id.",
+        "parameters": [
+          {
+            "name": "collection",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api-docs": {
+      "get": {
+        "description": "The Swagger Documentation link.",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/auth/github": {
+      "get": {
+        "description": "OAuth URI for github.",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/auth/github/callback": {
+      "get": {
+        "description": "The callback that redirects the authorization URI to the proper page.",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/auth/github/success": {
+      "get": {
+        "description": "A page for when OAuth is successful.",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/auth/github/error": {
+      "get": {
+        "description": "For when the OAuth process has failed.",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/authentication-failed": {
+      "get": {
+        "description": "Error page for when authentication has failed when trying to access the api data.",
+        "responses": {
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    }
+  },
+  "security": [
+    {
+      "OAuth2": [
+        "read:user write:user"
+      ]
+    }
+  ]
+}

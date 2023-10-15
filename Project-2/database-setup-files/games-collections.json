@@ -1,0 +1,32 @@
+[
+    {
+        "name":"Lion Welps",
+        "currentVersion":"1.8.6.2",
+        "releaseYear":"2004",
+        "betaStatus": "released"
+    },
+    {
+        "name":"PK from the Shadows",
+        "currentVersion":"1.5.2",
+        "releaseYear":"2010",
+        "betaStatus": "released"
+    },
+    {
+        "name":"Elephant's Triumph",
+        "currentVersion":"1.2.0",
+        "releaseYear":"2020",
+        "betaStatus": "released"
+    },
+    {
+        "name":"Divinity Divine",
+        "currentVersion":"1.1.4.10",
+        "releaseYear":"2022",
+        "betaStatus": "released"
+    },
+    {
+        "name":"Paradise Conquered - The Final Crusade",
+        "currentVersion":"0.8.1.22",
+        "releaseYear":"pending",
+        "betaStatus": "active"
+    }
+]

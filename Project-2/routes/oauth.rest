@@ -1,0 +1,59 @@
+### Request
+GET http://localhost:3000/auth/github
+
+### Expected Response
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+
+###################
+
+### POST Request ###
+POST http://localhost:3000/api/cse-341/contacts/post
+Content-Type: application/json
+
+{
+  "firstName": "Sierra",
+  "lastName": "Wamsley",
+  "email": "bluewamsley@gmail.com",
+  "favoriteColor": "blue",
+  "birthday": "5/24/2002"
+}
+
+### Expected Response ###
+HTTP/1.1 201 Created
+Content-Type: application/json; charset=utf-8
+
+{
+  "acknowledged": true,
+  "insertedId": "id"
+}
+
+###################
+
+### PUT Request ###
+PUT http://localhost:3000/api/cse-341/contacts/65178adee448d71142a13e53
+Content-Type: application/json
+
+{
+    "email":"notthaguy@hotmail.com",
+    "favoriteColor": "blue"
+}
+
+### Expected Response ###
+HTTP/1.1 204 No Content
+
+###################
+
+### DELETE Request ###
+DELETE http://localhost:3000/api/cse-341/contacts/delete=6517a4eff44d222e76e372fe
+
+# Expected Response ###
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+
+{
+  "acknowledged": true,
+  "deletedCount": 1
+}
+
+###################

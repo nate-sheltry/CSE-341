@@ -1,0 +1,159 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Project 2 API",
+    "description": "An API For my webservices class.",
+    "version": "1.0.0"
+  },
+  "host": "localhost:3000",
+  "basePath": "/",
+  "securityDefinitions": {
+    "oauth2": {
+       "type": "oauth2",
+       "flow": "accessCode",
+       "authorizationUrl": "http://localhost:3000/auth/github/callback",
+       "tokenUrl": "YOUR_OAUTH_TOKEN_URL",
+       "scopes": "read write"
+    }
+ },
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/api/games": {
+      "get": {
+        "description": "<b>To request all data, leave queries blank.<br>To get all games by year only enter year. <br>To search by beta status only enter beta.<br>Any combination of queries may be used to get any data matching the specified queries.<h2>Example Data:</h2><section><h3>Name: Lion Welps</h3> - year: 2004<br> - beta: released</section><section><h3>Name: PK from the Shadows</h3> - year: 2010<br> - beta: released</section>",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "year",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "beta",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/players": {
+      "get": {
+        "description": "<b>Find players by any of the following queries:<div><b>You may find multiple players by their last played game.<br>They're last played game's refund status, or by when they purchased their last play game.<br>You may also find them by their specific id.</b></div><br><h3>You may also get all data by leaving queries blank.</h3>",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "game",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "refund",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "purchase",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "lastPlayed",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "playerId",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api-docs": {
+      "get": {
+        "description": "The Swagger Documentation link.",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/auth/github": {
+      "get": {
+        "description": "OAuth URI for github.",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/auth/github/callback": {
+      "get": {
+        "description": "The callback that redirects the authorization URI to the proper page.",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/auth/github/success": {
+      "get": {
+        "description": "A page for when OAuth is successful.",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/auth/github/error": {
+      "get": {
+        "description": "For when the OAuth process has failed.",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/authentication-failed": {
+      "get": {
+        "description": "Error page for when authentication has failed when trying to access the api data.",
+        "responses": {
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    }
+  }
+}

@@ -110,7 +110,7 @@ routes.put('/api/:database/:collection/:id', async (req, res) => {
     let database; let collection;
     [database, collection] = determineDatabase(databaseName, collectionName);
 
-    const id = req.params;
+    const id = req.params.id;
     const updateData = req.body;
 
     try {
