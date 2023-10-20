@@ -1,5 +1,7 @@
 const routes = require('express').Router();
 const bodyParser = require('body-parser');
+const validate = require('../validation/validation');
+const { validationResult } = require('express-validator');
 
 console.log('got router');
 
@@ -83,7 +85,7 @@ routes.get('/api/:database/:collection', async (req, res) => {
 /*POST Routes*/
 routes.use(bodyParser.json());
 
-routes.post('/api/:database/:collection/post', async (req, res) => {
+routes.post('/api/:database/:collection/post', validate.addContactValidation, async (req, res) => {
     const databaseName = req.params.database;
     const collectionName = req.params.collection;
 
@@ -91,6 +93,10 @@ routes.post('/api/:database/:collection/post', async (req, res) => {
     [database, collection] = determineDatabase(databaseName, collectionName);
 
     const postData = req.body;
+    const errors = validationResult(req);
+    if(!errors.isEmpty()){
+        return res.status(422).json({ errors: errors.array() });
+    }
 
     try {
         const db = await database();
