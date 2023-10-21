@@ -14,8 +14,8 @@ async function putData(db, collectionName, id, newData){
         {returnOriginal: false}
     );
     if(updatedData == null){
-        let errors = {};
-        return errors.error = 'Document not found.';
+        let errors = {error: 'Document not found.'};
+        return errors;
     }
     return updatedData;
 }
