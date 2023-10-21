@@ -32,12 +32,14 @@
           {
             "name": "year",
             "in": "query",
-            "type": "string"
+            "type": "integer",
+            "example":"<b>1990</b>, <b>2000</b>, or <b>1987</b>"
           },
           {
             "name": "beta",
             "in": "query",
-            "type": "string"
+            "type": "string",
+            "example":"<b>active</b>, <b>expecting</b>, or <b>released</b>"
           }
         ],
         "responses": {
@@ -79,18 +81,20 @@
           {
             "name": "purchase",
             "in": "query",
-            "type": "string"
+            "type": "string",
+            "example":"<b>MM/DD/YYYY</b>"
           },
           {
             "name": "lastPlayed",
             "in": "query",
-            "type": "string"
+            "type": "string",
+            "example":"<b>MM/DD/YYYY</b>"
           },
           {
             "name": "playerId",
             "in": "query",
             "type": "string",
-            "example":"<b>1e113ac91be9f00c3f5a7fbca2f92fcd6d09d2c559cc76f62fcad575d21813c9</b>"
+            "example":"<b>SHA-256 Hash</b> or <b>Hexadecimal 64 Character String:</b><b>1e113ac91be9f00c3f5a7fbca2f92fcd6d09d2c559cc76f62fcad575d21813c9</b>"
           }
         ],
         "responses": {
@@ -111,7 +115,7 @@
     },
     "/api/games/post": {
       "post": {
-        "description": "<b>Add a games data object.</b><div>If improper keys are entered, or not all the necessary keys are entered, it will throw an error due to an invalid format.</div>",
+        "description": "<b>Add a games data object.</b><br><br><b>Name:</b> String<br><b>Current Version:</b> Maximum of 3 decimal place - \"1.10.2.41\"<br><b>Release Year:</b> Integer (4 digit)<br><b>Beta Status:</b> \"active\", \"expecting\", or \"released\"<br><div>If improper keys are entered, or not all the necessary keys are entered, it will throw an error due to an invalid format. If an improper value is entered, the data will fail to validate and be prevented from entering the database.</div>",
         "parameters": [
           {
             "name": "body",
@@ -153,7 +157,7 @@
     },
     "/api/players/post": {
       "post": {
-        "description": "<b>Add a players data object.</b><div>If improper keys are entered, or not all the necessary keys are entered, it will throw an error due to an invalid format.</div>",
+        "description": "<b>Add a players data object.</b><br><br><b>Name:</b> String<br><b>id:</b> 64 Character Hexadecimal String, or SHA-256 Hash<br><b>Game:</b> String<br><b>Game Version:</b> Maximum of 3 decimal place - \"1.10.2.41\"<br><b>Purchase Date:</b> String, \"MM/DD/YYYY\"<br><b>Refund Window:</b> \"expired\" or \"active\"<br><b>Purchase Date:</b> String, \"MM/DD/YYYY\"<br><div>If improper keys are entered, or not all the necessary keys are entered, it will throw an error due to an invalid format. If an improper value is entered, the data will fail to validate and be prevented from entering the database.</div>",
         "parameters": [
           {
             "name": "body",
@@ -300,7 +304,7 @@
     },
     "/api/{collection}/delete={id}": {
       "delete": {
-        "description":"<b>Collections:</b><br> - players<br> - games<br>id refers to the database id.",
+        "description":"<b>Collections:</b><br> - players<br> - games<br>id refers to the MongoDB id.",
         "parameters": [
           {
             "name": "collection",
