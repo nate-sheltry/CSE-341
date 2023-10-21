@@ -311,7 +311,7 @@ routes.put('/api/games/:id', oauthController.isAuthenticated, validate.putGameVa
     }
 });
 
-routes.put('/api/games/:id', oauthController.isAuthenticated, validate.putPlayerValidation, async (req, res) => {
+routes.put('/api/players/:id', oauthController.isAuthenticated, validate.putPlayerValidation, async (req, res) => {
     const updateData = req.body;
     const id = req.params.id;
 
