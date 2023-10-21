@@ -15,7 +15,7 @@ async function putData(db, collectionName, id, newData){
     );
     console.log(updatedData);
     if(updatedData.value == null){
-        return 'errors';
+        return updatedData.value;
     }
     return updatedData;
 }

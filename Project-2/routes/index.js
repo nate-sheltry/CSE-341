@@ -300,7 +300,7 @@ routes.put('/api/games/:dbid', oauthController.isAuthenticated, validate.putGame
         const db = await startMongoDB.startConnection('project-2');
         if(isValidFormat){
             updatedData = await universalController.putData(db, 'games', id, updateData);
-            if(updatedData == 'error'){
+            if(updatedData == null){
                 throw new Error('Document not found.');
             }
             res.status(204).json(updatedData);
@@ -311,7 +311,7 @@ routes.put('/api/games/:dbid', oauthController.isAuthenticated, validate.putGame
             return;
         }
     } catch (error) {
-        if(updatedData == 'error'){
+        if(updatedData == null){
             return res.status(404).send('Document not found.');
         }
         outputServerError(error, res);
@@ -334,7 +334,7 @@ routes.put('/api/players/:dbid', oauthController.isAuthenticated, validate.putPl
         const db = await startMongoDB.startConnection('project-2');
         if(isValidFormat){
             updatedData = await universalController.putData(db, 'players', id, updateData);
-            if(updatedData == 'error'){
+            if(updatedData == null){
                 throw new Error('Document not found.');
             }
             res.status(204).json(updatedData);
@@ -345,7 +345,7 @@ routes.put('/api/players/:dbid', oauthController.isAuthenticated, validate.putPl
             return;
         }
     } catch (error) {
-        if(updatedData == 'error'){
+        if(updatedData == null){
             return res.status(404).send('Document not found.');
         }
         outputServerError(error, res);
