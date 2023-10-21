@@ -22,7 +22,7 @@ async function deleteData(db, collectionName, id){
     if(result.deletedCount === 1)
         console.log('Document deleted successfully');
     else
-        console.log('Document not found');
+        result.error = 'Document not found.';
     return result;
 }
 
