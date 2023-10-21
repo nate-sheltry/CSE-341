@@ -44,35 +44,35 @@ exports.addGameValidation = [
     check('betaStatus', `Must have valid Beta status: ${betaValues[0]}, ${betaValues[1]}, ${betaValues[2]}`).isIn(betaValues)
 ]
 
-exports.putGameValidation = [
-    body().isObject().withMessage('Invalid data format. Expected an object.'),
-    body().custom((value) => {
-        const errors = []
-        console.log(value);
-        for(const item in value){
-            console.log(item)
-            if(item == gameKeys[0]){
-                check('name', `Game name is required. Example: ${gameNameExa}`).notEmpty()
-            }
-            else if(item == gameKeys[1]){
-                check('currentVersion', `Current game version is required. Examples:`+
-    `${gameVersionExa[0]}, ${gameVersionExa[1]}, ${gameVersionExa[2]}`).matches(gameVersionExp);
-            }
-            else if (item == 'releaseYear' && (!(value['releaseYear'].toString().match(releaseYearExp) || Number.isInteger(value['releaseYear'])) && value['releaseYear'] != releaseYearSub )) {
-                errors.push('Must be a valid year, or have the "pending" status.');
-            }
-            else if (item == 'betaStatus' && !(betaValues.includes(value['betaStatus']))) {
-                errors.push(`Must have valid Beta status: ${betaValues[0]}, ${betaValues[1]}, ${betaValues[2]}`);
-            }
-        }
+// exports.putGameValidation = [
+//     body().isObject().withMessage('Invalid data format. Expected an object.'),
+//     body().custom((value) => {
+//         const errors = []
+//         console.log(value);
+//         for(const item in value){
+//             console.log(item)
+//             if(item == gameKeys[0]){
+//                 check('name', `Game name is required. Example: ${gameNameExa}`).notEmpty()
+//             }
+//             else if(item == gameKeys[1]){
+//                 check('currentVersion', `Current game version is required. Examples:`+
+//     `${gameVersionExa[0]}, ${gameVersionExa[1]}, ${gameVersionExa[2]}`).matches(gameVersionExp);
+//             }
+//             else if (item == 'releaseYear' && (!(value['releaseYear'].toString().match(releaseYearExp) || Number.isInteger(value['releaseYear'])) && value['releaseYear'] != releaseYearSub )) {
+//                 errors.push('Must be a valid year, or have the "pending" status.');
+//             }
+//             else if (item == 'betaStatus' && !(betaValues.includes(value['betaStatus']))) {
+//                 errors.push(`Must have valid Beta status: ${betaValues[0]}, ${betaValues[1]}, ${betaValues[2]}`);
+//             }
+//         }
 
-        if (errors.length > 0) {
-            throw new Error(errors.join(' '));
-        }
+//         if (errors.length > 0) {
+//             throw new Error(errors.join(' '));
+//         }
 
-        return true;
-    })
-]
+//         return true;
+//     })
+// ]
 
 
 
@@ -88,43 +88,43 @@ exports.addPlayerValidation = [
     check('lastPlayed', `Must have a valid date value. Example: ${dateExample}`).matches(datePattern)
 ]
 
-exports.putPlayerValidation = [
-    body().isObject().withMessage('Invalid data format. Expected an object.'),
-    body().custom((value) => {
-        const errors = []
-        for(const item in value){
-            if(item == playerKeys[0] && (value.name == null || value.name == "")){
-                errors.push(`Must have a username for a player. Example: ${playerNameExa}`)
-            }
-            else if(item == playerKeys[1] && !value.id.match(sha256Exp)){
-                errors.push('Not a valid SHA-256 hash. Id must be a SHA-256 hash or follow hexadecimal standards with the length of 64 characters.')
-            }
-            else if(item == playerKeys[2] && (value.game == null || value.game == "")){
-                errors.push(`Game name is required. Example: ${gameNameExa}`);
-            }
-            else if(item == playerKeys[3] && !value.gameVersion.match(gameVersionExp)){
-                errors.push(`Game version is required. Examples:`+
-                `${gameVersionExa[0]}, ${gameVersionExa[1]}, ${gameVersionExa[2]}`);
-            }
-            else if(item == playerKeys[4] && !value.purchaseDate.match(datePattern)){
-                errors.push(`Must have a valid date value. Example: ${dateExample}`);
-            }
-            else if(item == playerKeys[5] && !refundWindowValues.includes(value.refundWindow)){
-                errors.push('Refund status must equal "expired" or "active"');
-            }
-            else if(item == playerKeys[6] && !value.lastPlayed.match(datePattern)){
-                errors.push(`Must have a valid date value. Example: ${dateExample}`);
-            }
+// exports.putPlayerValidation = [
+//     body().isObject().withMessage('Invalid data format. Expected an object.'),
+//     body().custom((value) => {
+//         const errors = []
+//         for(const item in value){
+//             if(item == playerKeys[0] && (value.name == null || value.name == "")){
+//                 errors.push(`Must have a username for a player. Example: ${playerNameExa}`)
+//             }
+//             else if(item == playerKeys[1] && !value.id.match(sha256Exp)){
+//                 errors.push('Not a valid SHA-256 hash. Id must be a SHA-256 hash or follow hexadecimal standards with the length of 64 characters.')
+//             }
+//             else if(item == playerKeys[2] && (value.game == null || value.game == "")){
+//                 errors.push(`Game name is required. Example: ${gameNameExa}`);
+//             }
+//             else if(item == playerKeys[3] && !value.gameVersion.match(gameVersionExp)){
+//                 errors.push(`Game version is required. Examples:`+
+//                 `${gameVersionExa[0]}, ${gameVersionExa[1]}, ${gameVersionExa[2]}`);
+//             }
+//             else if(item == playerKeys[4] && !value.purchaseDate.match(datePattern)){
+//                 errors.push(`Must have a valid date value. Example: ${dateExample}`);
+//             }
+//             else if(item == playerKeys[5] && !refundWindowValues.includes(value.refundWindow)){
+//                 errors.push('Refund status must equal "expired" or "active"');
+//             }
+//             else if(item == playerKeys[6] && !value.lastPlayed.match(datePattern)){
+//                 errors.push(`Must have a valid date value. Example: ${dateExample}`);
+//             }
 
-        }
+//         }
 
-        if (errors.length > 0) {
-            throw new Error(errors.join(' '));
-        }
+//         if (errors.length > 0) {
+//             throw new Error(errors.join(' '));
+//         }
 
-        return true;
-    })
-]
+//         return true;
+//     })
+// ]
 
 exports.deleteValidation = [
     param('id').isMongoId().withMessage('Invalid ID format'),
@@ -153,4 +153,29 @@ exports.getPlayerValidation = [
     query('purchase').optional().matches(datePattern).withMessage(`Must have a valid date value. Example: ${dateExample}`),
     query('refund').optional().isIn(refundWindowValues).withMessage('Refund status must equal "expired" or "active"'),
     query('lastPlayed').optional().matches(datePattern).withMessage(`Must have a valid date value. Example: ${dateExample}`)
+]
+
+exports.putPlayerValidation = [
+    check('name').optional().not().isEmpty().withMessage(`Must have a username for a player. Example: ${playerNameExa}`),
+    check('id').optional().matches(sha256Exp).withMessage('Not a valid SHA-256 hash. Id must be a SHA-256 hash or follow hexadecimal standards with the length of 64 characters.'),
+    check('gameVersion').optional().not().isEmpty().withMessage(`Game name must not be empty. Example: ${gameNameExa}`),
+    check('purchaseDate').optional().matches(datePattern).withMessage(`Must have a valid date value. Example: ${dateExample}`),
+    check('refundWindow').optional().isIn(refundWindowValues).withMessage('Refund status must equal "expired" or "active"'),
+    check('lastPlayed').optional().matches(datePattern).withMessage(`Must have a valid date value. Example: ${dateExample}`)
+]
+
+exports.putGameValidation = [
+    check('name').optional().not().isEmpty().withMessage(`Game name must not be empty if included. Example: ${gameNameExa}`),
+    check('currentVersion').optional().matches(gameVersionExp).withMessage(`Current game version is required. Where x is a digit. Examples:`+
+    `${gameVersionExa[0]}, ${gameVersionExa[1]}, ${gameVersionExa[2]}`),
+    check('releaseYear').optional().custom(value => {
+        if(value == releaseYearSub){
+            return true;
+        }
+        if(!value.match(releaseYearExp)){
+            throw new Error('Must be a valid year, or have the "pending" status.');
+        }
+        return true;
+    }),
+    check('betaStatus').optional().isIn(betaValues).withMessage(`Must have valid Beta status: ${betaValues[0]}, ${betaValues[1]}, ${betaValues[2]}`)
 ]
