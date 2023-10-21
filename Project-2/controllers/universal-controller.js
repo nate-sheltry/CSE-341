@@ -13,6 +13,8 @@ async function putData(db, collectionName, id, newData){
         { $set: newData },
         {returnOriginal: false}
     );
+    if(updatedData == null)
+        updatedData.error = 'Document not found.';
     return updatedData;
 }
 
