@@ -127,7 +127,7 @@ exports.addPlayerValidation = [
 // ]
 
 exports.deleteValidation = [
-    param('id').isMongoId().withMessage('Invalid ID format'),
+    param('dbid').isMongoId().withMessage('Invalid ID format'),
 ]
 
 //GET Validation
