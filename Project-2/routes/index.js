@@ -287,6 +287,7 @@ function checkForValidPutData(postData, collection){
 routes.put('/api/games/:dbid', oauthController.isAuthenticated, validate.putGameValidation, async (req, res) => {
     const updateData = req.body;
     const id = req.params.dbid;
+    let updatedData;
 
     const isValidFormat = checkForValidPutData(updateData, 'games');
 
@@ -298,7 +299,10 @@ routes.put('/api/games/:dbid', oauthController.isAuthenticated, validate.putGame
     try {
         const db = await startMongoDB.startConnection('project-2');
         if(isValidFormat){
-            const updatedData = await universalController.putData(db, 'games', id, updateData);
+            updatedData = await universalController.putData(db, 'games', id, updateData);
+            if(updatedData.error){
+                throw new Error('Document not found.');
+            }
             res.status(204).json(updatedData);
             return;
         }
@@ -307,6 +311,9 @@ routes.put('/api/games/:dbid', oauthController.isAuthenticated, validate.putGame
             return;
         }
     } catch (error) {
+        if(updatedData.error){
+            return res.status(404).send('Document not found.');
+        }
         outputServerError(error, res);
     }
 });
@@ -314,6 +321,7 @@ routes.put('/api/games/:dbid', oauthController.isAuthenticated, validate.putGame
 routes.put('/api/players/:dbid', oauthController.isAuthenticated, validate.putPlayerValidation, async (req, res) => {
     const updateData = req.body;
     const id = req.params.dbid;
+    let updatedData;
 
     const isValidFormat = checkForValidPutData(updateData, 'players');
 
@@ -325,7 +333,10 @@ routes.put('/api/players/:dbid', oauthController.isAuthenticated, validate.putPl
     try {
         const db = await startMongoDB.startConnection('project-2');
         if(isValidFormat){
-            const updatedData = await universalController.putData(db, 'players', id, updateData);
+            updatedData = await universalController.putData(db, 'players', id, updateData);
+            if(updatedData.error){
+                throw new Error('Document not found.');
+            }
             res.status(204).json(updatedData);
             return;
         }
@@ -334,6 +345,9 @@ routes.put('/api/players/:dbid', oauthController.isAuthenticated, validate.putPl
             return;
         }
     } catch (error) {
+        if(updatedData.error){
+            return res.status(404).send('Document not found.');
+        }
         outputServerError(error, res);
     }
 });
