@@ -206,12 +206,12 @@
         }
       }
     },
-    "/api/games/{id}": {
+    "/api/games/{dbid}": {
       "put": {
         "description": "<b>Change some or all of the data in a game data object</b><div>If improper keys are entered, it will throw an error due to an invalid key.</div>",
         "parameters": [
           {
-            "name": "id",
+            "name": "dbid",
             "in": "path",
             "required": true,
             "type": "string"
@@ -251,12 +251,12 @@
         }
       }
     },
-    "/api/players/{id}": {
+    "/api/players/{dbid}": {
       "put": {
         "description": "<b>Change and modify some or all data in a player data object.</b><div>If improper keys are entered, it will throw an error due to an invalid key.</div>",
         "parameters": [
           {
-            "name": "id",
+            "name": "dbid",
             "in": "path",
             "required": true,
             "type": "string"
@@ -302,7 +302,7 @@
         }
       }
     },
-    "/api/{collection}/delete={id}": {
+    "/api/{collection}/delete={dbid}": {
       "delete": {
         "description":"<b>Collections:</b><br> - players<br> - games<br>id refers to the MongoDB id.",
         "parameters": [
@@ -313,7 +313,7 @@
             "type": "string"
           },
           {
-            "name": "id",
+            "name": "dbid",
             "in": "path",
             "required": true,
             "type": "string"

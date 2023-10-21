@@ -284,9 +284,9 @@ function checkForValidPutData(postData, collection){
 //     }
 // });
 
-routes.put('/api/games/:id', oauthController.isAuthenticated, validate.putGameValidation, async (req, res) => {
+routes.put('/api/games/:dbid', oauthController.isAuthenticated, validate.putGameValidation, async (req, res) => {
     const updateData = req.body;
-    const id = req.params.id;
+    const id = req.params.dbid;
 
     const isValidFormat = checkForValidPutData(updateData, 'games');
 
@@ -311,9 +311,9 @@ routes.put('/api/games/:id', oauthController.isAuthenticated, validate.putGameVa
     }
 });
 
-routes.put('/api/players/:id', oauthController.isAuthenticated, validate.putPlayerValidation, async (req, res) => {
+routes.put('/api/players/:dbid', oauthController.isAuthenticated, validate.putPlayerValidation, async (req, res) => {
     const updateData = req.body;
-    const id = req.params.id;
+    const id = req.params.dbid;
 
     const isValidFormat = checkForValidPutData(updateData, 'players');
 
@@ -340,13 +340,13 @@ routes.put('/api/players/:id', oauthController.isAuthenticated, validate.putPlay
 
 /*DELETE Routes*/
 
-routes.delete('/api/:collection/delete=:id', oauthController.isAuthenticated, validate.deleteValidation, async (req, res) => {
+routes.delete('/api/:collection/delete=:dbid', oauthController.isAuthenticated, validate.deleteValidation, async (req, res) => {
     const collectionName = req.params.collection;
     let deletedData = {};
     let collection; let databaseName;
     [databaseName, collection] = determineCollection(collectionName);
 
-    const id = req.params.id;
+    const id = req.params.dbid;
 
     const errors = validationResult(req);
     if(!errors.isEmpty()){
