@@ -13,9 +13,9 @@ async function putData(db, collectionName, id, newData){
         { $set: newData },
         {returnOriginal: false}
     );
+    console.log(updatedData);
     if(updatedData == null){
-        let errors = {error: 'Document not found.'};
-        return errors;
+        return 'errors';
     }
     return updatedData;
 }
