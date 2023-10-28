@@ -112,7 +112,7 @@ async function determineGetRequest(req, res, db, collection){
 //     }
 // });
 
-routes.get('/api/games', oauthController.isAuthenticated, validate.getGameValidation, async (req, res) => {
+routes.get('/api/games', oauthController.isAuthenticated, validate.getPlayerValidation, async (req, res) => {
 
     const errors = validationResult(req);
     if(!errors.isEmpty()){
@@ -133,7 +133,7 @@ routes.get('/api/players', oauthController.isAuthenticated, validate.getPlayerVa
     if(!errors.isEmpty()){
         return res.status(422).json({ errors: errors.array() });
     }
-
+    console.log('whats wrong')
     try {
         const db = await startMongoDB.startConnection('project-2');
         await determineGetRequest(req, res, db, 'players');

@@ -5,7 +5,7 @@
     "description": "An API For my webservices class.",
     "version": "1.0.0"
   },
-  "host": "https://cse341-project-2-lo8v.onrender.com",
+  "host": "cse341-project-2-lo8v.onrender.com",
   "basePath": "/",
   "schemes": [
     "https"
@@ -14,7 +14,7 @@
     "oauth2": {
        "type": "oauth2",
        "flow": "accessCode",
-       "authorizationUrl": "https://cse341-project-2-lo8v.onrender.com/auth/github",
+       "authorizationUrl": "http://cse341-project-2-lo8v.onrender.com/auth/github",
        "description":"The Client Secret is provided by the server, you must enter the client ID.<br><b> Client Id:</b> 254928805826d96201c8<br>",
        "scopes": "read write"
     }
