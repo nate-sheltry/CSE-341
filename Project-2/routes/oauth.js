@@ -18,9 +18,10 @@ router.get('/auth/github', (req, res) => {
   if (clientId != process.env.GITHUB_CLIENT_ID) {
     return res.status(400).send('Client ID is incorrect. Please <a href="/api-docs/">login with Github</a>.');
   }
-
+  
   // Use the provided client ID for authentication
   githubOAuth.authenticate('github', { scope: ['user:email'] })(req, res);
+
 });
 
 // Callback after OAuth authentication
@@ -35,14 +36,14 @@ router.get('/auth/github/callback',
 // Successful Login page
 router.get('/auth/github/success', oauthController.isAuthenticated, (req, res) => {
   
-  res
+  res.status(204)
     .set(authParams.title , authParams.success)
     .send('Authentication Successful!');
 });
 
 // Failed to login Page.
 router.get('/auth/github/error', (req, res) => {
-  res
+  res.status(500)
     .set(authParams.title , authParams.failed)
     .send('An Error has occurred, please try again, <a href="/api-docs/">login with Github</a>.');
 });

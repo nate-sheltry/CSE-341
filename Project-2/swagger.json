@@ -14,8 +14,8 @@
     "oauth2": {
        "type": "oauth2",
        "flow": "accessCode",
-       "authorizationUrl": "http://cse341-project-2-lo8v.onrender.com/auth/github",
-       "description":"The Client Secret is provided by the server, you must enter the client ID.<br><b> Client Id:</b> 254928805826d96201c8<br>",
+       "authorizationUrl": "https://cse341-project-2-lo8v.onrender.com/auth/github",
+       "description":"The Client Secret is provided by the server, you must enter the client ID.<br><b> Client Id:</b> 254928805826d96201c8<br>The user will remain logged in for the duration of their session.",
        "scopes": "read write"
     }
  },
@@ -184,7 +184,7 @@
                   "example": "expired"
                 },
                 "lastPlayed": {
-                  "example": "8/5/2021"
+                  "example": "08/05/2021"
                 }
               }
             }
@@ -339,8 +339,8 @@
       "get": {
         "description": "The Swagger Documentation link.",
         "responses": {
-          "default": {
-            "description": ""
+          "200": {
+            "description": "OK"
           }
         }
       }
@@ -349,8 +349,8 @@
       "get": {
         "description": "OAuth URI for github.",
         "responses": {
-          "default": {
-            "description": ""
+          "400": {
+            "description": "Bad Request"
           }
         }
       }
@@ -359,8 +359,8 @@
       "get": {
         "description": "The callback that redirects the authorization URI to the proper page.",
         "responses": {
-          "default": {
-            "description": ""
+          "TypeError": {
+            "description": "Network Error"
           }
         }
       }
@@ -369,8 +369,8 @@
       "get": {
         "description": "A page for when OAuth is successful.",
         "responses": {
-          "default": {
-            "description": ""
+          "204": {
+            "description": "No Content"
           }
         }
       }
@@ -379,8 +379,8 @@
       "get": {
         "description": "For when the OAuth process has failed.",
         "responses": {
-          "default": {
-            "description": ""
+          "500": {
+            "description": "Server Error"
           }
         }
       }
