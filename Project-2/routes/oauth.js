@@ -11,23 +11,11 @@ const authParams = {
 };
 
 // Initiate OAuth authentication
-router.get('/auth/github', (req, res) => {
-  const clientId = req.query.client_id;
-
-  // Check if the client ID is provided in the query parameters
-  if (clientId != process.env.GITHUB_CLIENT_ID) {
-    return res.status(400).send('Client ID is incorrect. Please <a href="/api-docs/">login with Github</a>.');
-  }
-  
-  // Use the provided client ID for authentication
-  githubOAuth.authenticate('github', { scope: ['user:email'] })(req, res);
-
-});
+router.get('/auth/github', githubOAuth.authenticate('github', { scope: ['user:email'] }));
 
 // Callback after OAuth authentication
 router.get('/auth/github/callback',
-  githubOAuth.authenticate('github', { failureRedirect: '/auth/github/error' }),
-  function(req, res) {
+  githubOAuth.authenticate('github', { failureRedirect: '/auth/github/error' }), (req, res) => {
     // Successful authentication, redirect to success page
     res.redirect('/auth/github/success');
   }
@@ -55,5 +43,16 @@ router.get('/authentication-failed', (req, res) => {
     .set(authParams.title , authParams.failed)
     .send('Error, failed to authenticate, please <a href="/api-docs/">login with Github</a>.');
 });
+
+router.get('/auth/github/signout', (req, res) => {
+  try {
+    req.session.destroy(function (err){
+      //code
+    })
+    res.status(204).redirect('/api-docs')
+  } catch (err){
+    res.status(400),send({message: 'Failed to sign out.'})
+  }
+})
 
 module.exports = router;

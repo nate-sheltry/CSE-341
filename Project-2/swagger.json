@@ -15,7 +15,7 @@
        "type": "oauth2",
        "flow": "accessCode",
        "authorizationUrl": "https://cse341-project-2-lo8v.onrender.com/auth/github",
-       "description":"The Client Secret is provided by the server, you must enter the client ID.<br><b> Client Id:</b> 254928805826d96201c8<br>The user will remain logged in for the duration of their session.",
+       "description":"The Client does not require an id or secret.",
        "scopes": "read write"
     }
  },
@@ -390,6 +390,19 @@
         "description": "Error page for when authentication has failed when trying to access the api data.",
         "responses": {
           "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/auth/github/signout": {
+      "get": {
+        "description": "Logout of OAuth.",
+        "responses": {
+          "200": {
+            "description": "Unauthorized"
+          },
+          "400": {
             "description": "Unauthorized"
           }
         }
