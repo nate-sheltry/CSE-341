@@ -2,7 +2,7 @@ const { MongoClient } = require('mongodb');
 require('dotenv').config();
 
 //connection URL
-const url = process.env.MONGODB_URL;
+const url = process.env.MONGODB_URI;
 
 //Database Name
 
